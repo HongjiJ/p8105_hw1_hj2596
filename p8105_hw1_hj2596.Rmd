@@ -1,0 +1,55 @@
+---
+title: "Homework 1"
+output: github_document
+---
+
+I'm an R Markdown document! 
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+# Problem One
+
+```{r}
+data("penguins", package = "palmerpenguins")
+mean(penguins$flipper_length_mm,na.rm=TRUE)
+```
+The dataset contains the information on penguins. Each observation is a penguin and there are eight columns containing the information species, the island they are from, bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and year for each penguin observation.
+There are `r nrow(penguins)` rows and `r ncol(penguins)` columns in the penguins dataset. 
+The mean of flipper length is `r mean(pull(penguins , flipper_length_mm),na.rm=TRUE)`mms after removing the missing values.
+
+```{r}
+ggplot(penguins,aes(x = bill_length_mm, y = flipper_length_mm, color = species))+ geom_point()
+ggsave("hw1_scatter_plot.pdf", height = 4, width = 6)
+```
+# Problem Two
+
+```{r}
+problem2_df = tibble(
+  norm_samp = rnorm(10),
+  norm_samp_pos = norm_samp > 0,
+  char_vec = c("a","b","c","d","e","f","g","h","i","j"),
+  factor_vec = factor(c("high","medium","low","high","medium","low","high","medium","low","high"))
+)
+```
+
+```{r}
+mean_vector1 = mean(pull(problem2_df,norm_samp))
+mean_vector1
+mean_vector2 = mean(pull(problem2_df,norm_samp_pos))
+mean_vector2
+mean_vector3 = mean(pull(problem2_df,char_vec))
+mean_vector3
+mean_vector4 = mean(pull(problem2_df,factor_vec))
+mean_vector4
+```
+
+```{r}
+as.numeric((pull(problem2_df,norm_samp)))
+as.numeric((pull(problem2_df,norm_samp_pos)))
+as.numeric((pull(problem2_df,char_vec)))
+as.numeric((pull(problem2_df,factor_vec)))
+```
+```
+
