@@ -19,6 +19,10 @@ library(ggplot2)
 data("penguins", package = "palmerpenguins")
 #Take a look at the dataset
 head(penguins)
+#get the name
+names(penguins)
+#look at the summary of data
+summary(penguins)
 #Get the nrow and ncol
 penguins_row = nrow(penguins)
 penguins_col = ncol(penguins)
@@ -27,7 +31,7 @@ mean_of_flipper_length = mean(penguins$flipper_length_mm,na.rm=TRUE)
 ```
 
 Description:
-The dataset contains the information on penguins. Each row(observation) is a penguin and there are eight columns containing the information of penguins including species, the island they are from, bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and year for each penguin observation.
+The dataset contains the information on three species of penguins from three islands and the data are collected between 2007 and 2009. Each row(observation) is a penguin and there are eight columns containing the information of penguins including species, the island they are from, bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and year for each penguin observation.
 There are `r nrow(penguins)` rows and `r ncol(penguins)` columns in the penguins dataset. 
 The mean of flipper length is `r mean(pull(penguins , flipper_length_mm),na.rm=TRUE)`mms after removing the missing values.
 
@@ -66,9 +70,12 @@ mean_vector3
 mean_vector4 = mean(pull(problem2_df,factor_vec))
 mean_vector4
 ```
-The mean can be calculated for the number vector(the normal sample of size 10) and the logical vector but the mean cannot be calculated for the character vector and the factor vector.
+
+The mean can be calculated for the number vector(the normal sample of size 10) and the logical vector. But the mean cannot be calculated for the character vector and the factor vector and the result is N/A for the character vector and the factor vector.
 
 ```{r,eval = FALSE}
+#use as.numeric to create three new vector from the three vectors above
+#and try to calculate the mean value of them
 numeric_logical_vector = as.numeric((pull(problem2_df,norm_samp_pos)))
 mean(numeric_logical_vector)
 numeric_char_vector = as.numeric((pull(problem2_df,char_vec)))
@@ -77,5 +84,5 @@ numeric_factor_vector =as.numeric((pull(problem2_df,factor_vec)))
 mean(numeric_factor_vector)
 ```
 
-The values of logical factor are converted to numbers 1 and 0, since the value of TRUE is 1 and the value of FALSE is 0 before converting. The values factor vector are converted to numbers of 1, 2 and 3. But the character vector can not be converted to numbers.
-Yes, this explained why we can calculate the mean of the logical vector in the question above. We can calculate the mean for it because TRUE and FALSE are treated as 1 and 0. And we cannot calculate the mean for factor unless it is converted to number. And for the character vector, it cannot be converted to numbers because they are letters, but if they were numbers in the character vector, it can also be converted.
+The values of logical factor are converted to numbers 1 and 0, since the value of TRUE is 1 and the value of FALSE is 0 in R programming. The values factor vector are converted to numbers of 1, 2 and 3. But the character vector cannot be converted to numbers.
+Yes, this explained why we can calculate the mean of the logical vector in the question above since TRUE and FALSE have values of 1 and 0. And we cannot calculate the mean for the factor vector unless it is converted to number using as.numeric. And for the character vector, it cannot be converted to numbers because here they are letters instead of numbers in the character vector.
