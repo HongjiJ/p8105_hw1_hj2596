@@ -31,7 +31,7 @@ mean_of_flipper_length = mean(penguins$flipper_length_mm,na.rm=TRUE)
 ```
 
 Description:
-The dataset contains the information on three species of penguins from three islands. The mean of bill_length_mm is 43.92mm. The mean of bill_depth_mm is 200.9mm. The mean of body_mass_g is 4202g. Each row(observation) is a penguin and there are eight columns containing the information of penguins including species, the island they are from, bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and year for each penguin observation.
+The dataset contains the information on three species of penguins from three islands. The mean of bill_length_mm is 17.15mm. The mean of bill_depth_mm is 200.9mm. The mean of body_mass_g is 4202g. Each row(observation) is a penguin and there are eight columns containing the information of penguins including species, the island they are from, bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and year for each penguin observation.
 There are `r nrow(penguins)` rows and `r ncol(penguins)` columns in the penguins dataset. 
 The mean of flipper length is `r mean(pull(penguins , flipper_length_mm),na.rm=TRUE)`mms after removing the missing values.
 
